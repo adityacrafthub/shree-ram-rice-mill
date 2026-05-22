@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Ram Rice Mill | श्री राम राइस मिल</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #FFE774; color: #1a1a1a; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-bottom: 0.5px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: #D85A30;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 20px;
+    }
+    .logo-text { font-size: 15px; font-weight: 500; color: #1a1a1a; line-height: 1.2; }
+    .logo-text .nepali { display: block; font-size: 13px; color: #D85A30; font-weight: 500; }
+    .logo-text .tagline { display: block; font-size: 11px; color: #888; font-weight: 400; }
+    .nav-contact {
+      font-size: 16px; color: #D85A30; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; gap: 5px; text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      background: #D85A30;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: #EF9F27;
+      opacity: 0.3;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: #993C1D;
+      opacity: 0.25;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #EF9F27;
+      color: #412402;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-size: 38px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      position: relative; z-index: 1;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 2rem;
+      position: relative; z-index: 1;
+    }
+    .hero-btns {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .btn-primary {
+      background: #fff;
+      color: #D85A30;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* SECTIONS */
+    .section { padding: 3rem 2rem; }
+    .section-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: #fff;
+      border: 0.5px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 22px;
+    }
+    .icon-orange { background: #FAECE7; color: #D85A30; }
+    .icon-amber  { background: #FAEEDA; color: #BA7517; }
+    .icon-green  { background: #EAF3DE; color: #3B6D11; }
+    .service-name { font-size: 15px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
+    .service-name-ne { font-size: 13px; font-weight: 600; color: #D85A30; margin-bottom: 8px; }
+    .service-desc { font-size: 13px; color: #666; line-height: 1.6; }
+    .service-desc-ne { font-size: 12.5px; color: #444; line-height: 1.6; margin-top: 6px; }
+    .coming-badge {
+      display: inline-block;
+      background: #FAEEDA;
+      color: #633806;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    /* WHY SECTION */
+    .why-section {
+      background: #FFF2D7;
+      border-radius: 24px 24px 0 0;
+      margin: 0 1rem 0 1rem;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .why-card {
+      background: #FFFFFF;
+      border: 1px solid #FFDEA5;
+      border-radius: 16px;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .why-card:hover {
+      transform: translateY(-3px);
+      border-color: #D85A30;
+      box-shadow: 0 6px 14px rgba(216, 90, 48, 0.1);
+    }
+    .why-label { font-size: 13px; font-weight: 600; color: #3A2C1A; margin-top: 8px; line-height: 1.4; }
+    .why-label-ne { font-size: 12px; font-weight: 500; color: #D85A30; margin-top: 5px; line-height: 1.4; }
+
+    /* CONTACT SECTION */
+    .contact-section { background: #D85A30; padding: 3rem 2rem; }
+    .contact-box { max-width: 520px; margin: 0 auto; text-align: center; }
+    .contact-box h2 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .contact-box > p { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+    .contact-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: left;
+    }
+    .contact-card-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .contact-card-value { font-size: 16px; color: #fff; font-weight: 800; line-height: 1.7; }
+    .contact-card-sub { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); margin-top: 3px; }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.25);
+      border-radius: 6px;
+      padding: 2px 5px;
+      font-size: 16px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .footer { background: #711B0C; padding: 1.4rem 2rem; text-align: center; margin-top: 0; }
+    .footer-name { font-size: 16px; font-weight: 500; color: #FFD9A0; margin-bottom: 4px; }
+    .footer-nepali { font-size: 14px; color: rgba(255,220,160,0.75); margin-bottom: 8px; }
+    .footer-info { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+    /* TECH BANNER */
+    .tech-banner {
+      background: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 0.7rem 1.5rem;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .tech-banner span { color: #EF9F27; }
+
+    /* MILL TECH SECTION */
+    .mill-tech-section { background: #fff; padding: 3rem 2rem; }
+    .mill-tech-intro {
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .tech-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+    }
+    .tech-feature-card {
+      border: 1.5px solid #F0E8DC;
+      border-radius: 14px;
+      padding: 1.3rem 1.1rem;
+      background: #FFFBF5;
+    }
+    .tech-feature-icon { font-size: 26px; margin-bottom: 10px; }
+    .tech-feature-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
+    .tech-feature-title-ne { font-size: 13px; font-weight: 600; color: #D85A30; margin-bottom: 6px; }
+    .tech-feature-desc { font-size: 12.5px; color: #555; line-height: 1.6; }
+    .tech-feature-desc-ne { font-size: 12px; color: #444; line-height: 1.6; margin-top: 5px; }
+
+    /* VITAMINS STRIP */
+    .vitamins-strip {
+      background: #FFF8EE;
+      border: 1.5px solid #FFDEA5;
+      border-radius: 16px;
+      padding: 1.5rem 1.3rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .vitamins-strip-title { font-size: 14px; font-weight: 600; color: #3A2C1A; margin-bottom: 1rem; }
+    .vitamins-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .vitamin-pill {
+      background: #fff;
+      border: 1px solid #FFDEA5;
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+    }
+    .vitamin-name { font-size: 13px; font-weight: 700; color: #D85A30; margin-bottom: 3px; }
+    .vitamin-benefit { font-size: 11.5px; color: #555; line-height: 1.5; }
+    .vitamin-benefit-ne { font-size: 11.5px; color: #444; line-height: 1.5; margin-top: 3px; }
+
+    /* RICE TECH SECTION */
+    .rice-tech-section { background: #F0F7E8; padding: 3rem 2rem; }
+    .rice-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .rice-tech-card {
+      background: #fff;
+      border: 1.5px solid #C8E6A0;
+      border-radius: 14px;
+      padding: 1.2rem 1rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .rice-tech-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .rice-tech-title { font-size: 13.5px; font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
+    .rice-tech-title-ne { font-size: 12.5px; font-weight: 600; color: #3B6D11; margin-bottom: 5px; }
+    .rice-tech-desc { font-size: 12px; color: #555; line-height: 1.6; }
+    .rice-tech-desc-ne { font-size: 12px; color: #444; line-height: 1.6; margin-top: 4px; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .contact-cards { grid-template-columns: 1fr; }
+      nav { padding: 0.8rem 1rem; }
+      .why-section { margin: 0 0.5rem; }
+      .vitamins-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="logo-icon">🌾</div>
+    <div class="logo-text">
+      <span class="nepali">श्री राम राइस मिल</span>
+      Shree Ram Rice Mill
+      <span class="tagline">Quality grains, every day</span>
+    </div>
+  </div>
+  <a class="nav-contact" href="#contact">📞 Contact us</a>
+</nav>
+
+<div class="tech-banner">
+  ⚙️ <span>Modern Mill</span> — Latest automatic technology for purer, healthier grains
+</div>
+
+<div class="hero">
+  <div class="hero-badge">🏭 Modern mill with latest technology</div>
+  <h1>Fresh Rice &amp; Aata,<br>Straight from the Mill</h1>
+  <p class="hero-sub">Pure, freshly milled products for your home and business.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#contact">Contact us</a>
+    <a class="btn-secondary" href="#services">Our services</a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <p class="section-title">What we offer</p>
+  <p class="section-sub">Fresh, quality products milled right here</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon icon-amber">🌾</div>
+      <div class="service-name">Aata grinding</div>
+      <div class="service-name-ne">आटा पिसाइ</div>
+      <div class="service-desc">Freshly ground wheat flour using our modern mill — specially designed to protect natural fiber, vitamins, and minerals during grinding. With a built-in heat extraction system, your aata stays cool and nutritious.</div>
+      <div class="service-desc-ne">आधुनिक मिलमा पिसिएको ताजा आटा — फाइबर, भिटामिन र खनिज सुरक्षित। ताप निष्कासन प्रणालीले आटा चिसो र पोषणयुक्त राख्छ।</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon icon-orange">🌱</div>
+      <div class="service-name">Rice production</div>
+      <div class="service-name-ne">चामल उत्पादन</div>
+      <div class="service-desc">Our fully automatic rice processing ensures every grain is perfectly clean — no winnowing, sorting, or picking needed at home. Just pure, ready-to-cook rice straight from the mill.</div>
+      <div class="service-desc-ne">स्वचालित मिलले हरेक दाना सफा गर्छ — घरमा पछार्नु, छान्नु वा टिप्नु पर्दैन। मिलबाटै शुद्ध, पकाउन तयार चामल।</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon icon-amber">🏠</div>
+      <div class="service-name">Aata for families &amp; small businesses</div>
+      <div class="service-name-ne">घर र साना व्यवसायका लागि आटा</div>
+      <div class="service-desc">Whether you need flour for your home kitchen or run a small food business, we grind fresh aata to order — in the quantity you need, whenever you need it.</div>
+      <div class="service-desc-ne">घरको भान्साका लागि होस् वा साना व्यवसायका लागि — चाहिएको मात्रामा, चाहिएको बेला ताजा आटा पिसाइदिन्छौं।</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon icon-green">🚚</div>
+      <div class="service-name">Bulk supply</div>
+      <div class="service-name-ne">थोक आपूर्ति</div>
+      <div class="service-desc">Wholesale supply for retailers and businesses — coming soon.</div>
+      <div class="service-desc-ne">खुद्रा पसल र व्यवसायका लागि थोक आपूर्ति — छिट्टै आउँदैछ।</div>
+      <div><span class="coming-badge">Coming soon</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MILL TECHNOLOGY SECTION -->
+<div class="mill-tech-section" id="technology">
+  <p class="section-title">Our Modern Mill Technology</p>
+  <p class="section-sub">Built with the latest machinery for healthier, purer output</p>
+  <p class="mill-tech-intro">
+    Our mill is equipped with <strong>state-of-the-art automatic technology</strong> — not a traditional mill. It is specially designed to preserve the natural goodness of wheat during grinding, so you get aata that is rich in fiber, vitamins, and minerals just as nature intended.
+  </p>
+
+  <div class="tech-features-grid">
+    <div class="tech-feature-card">
+      <div class="tech-feature-icon">🌡️</div>
+      <div class="tech-feature-title">Heat Extraction System</div>
+      <div class="tech-feature-title-ne">ताप निष्कासन प्रणाली</div>
+      <div class="tech-feature-desc">Our grinding process uses a dedicated heat extraction mechanism that removes excess heat in real time — preventing nutrient loss and keeping your flour fresh and cool.</div>
+      <div class="tech-feature-desc-ne">पिसाइ क्रममा निस्किने अतिरिक्त ताप तुरुन्त हटाइन्छ — पोषणतत्व नष्ट हुँदैन, आटा ताजा र चिसो रहन्छ।</div>
+    </div>
+    <div class="tech-feature-card">
+      <div class="tech-feature-icon">🧬</div>
+      <div class="tech-feature-title">Nutrient Protection Design</div>
+      <div class="tech-feature-title-ne">पोषण संरक्षण डिजाइन</div>
+      <div class="tech-feature-desc">The mill is engineered to protect fiber, vitamins, and minerals that are normally lost in conventional grinding — so your aata retains maximum nutritional value.</div>
+      <div class="tech-feature-desc-ne">सामान्य मिलमा नष्ट हुने फाइबर, भिटामिन र खनिज यहाँ सुरक्षित रहन्छन् — आटामा अधिकतम पोषण हुन्छ।</div>
+    </div>
+    <div class="tech-feature-card">
+      <div class="tech-feature-icon">⚙️</div>
+      <div class="tech-feature-title">Fully Automatic Process</div>
+      <div class="tech-feature-title-ne">पूर्ण स्वचालित प्रक्रिया</div>
+      <div class="tech-feature-desc">From raw grain to finished flour, everything is handled by our advanced automatic machinery — consistent quality every single time, with no compromise.</div>
+      <div class="tech-feature-desc-ne">कच्चा अन्नदेखि तयार आटासम्म सबै काम स्वचालित यन्त्रले गर्छ — हरपटक एकनास गुणस्तर।</div>
+    </div>
+  </div>
+
+  <!-- VITAMINS STRIP -->
+  <div class="vitamins-strip">
+    <div class="vitamins-strip-title">🌿 Vitamins naturally found in wheat — preserved in every grind</div>
+    <div class="vitamins-row">
+      <div class="vitamin-pill">
+        <div class="vitamin-name">Vitamin B1 (Thiamine)</div>
+        <div class="vitamin-benefit">Supports energy metabolism and healthy nerve function</div>
+        <div class="vitamin-benefit-ne">ऊर्जा र स्नायु प्रणालीलाई सहयोग गर्छ</div>
+      </div>
+      <div class="vitamin-pill">
+        <div class="vitamin-name">Vitamin B2 (Riboflavin)</div>
+        <div class="vitamin-benefit">Helps the body break down food and supports healthy skin</div>
+        <div class="vitamin-benefit-ne">खाना पाच्न र छालाको स्वास्थ्यमा मद्दत गर्छ</div>
+      </div>
+      <div class="vitamin-pill">
+        <div class="vitamin-name">Vitamin B3 (Niacin)</div>
+        <div class="vitamin-benefit">Aids digestion, keeps skin healthy, and supports brain function</div>
+        <div class="vitamin-benefit-ne">पाचन, छाला र मस्तिष्कको कार्यलाई सघाउँछ</div>
+      </div>
+      <div class="vitamin-pill">
+        <div class="vitamin-name">Vitamin E</div>
+        <div class="vitamin-benefit">A powerful antioxidant that protects cells and boosts immunity</div>
+        <div class="vitamin-benefit-ne">कोषिका सुरक्षित गर्छ र प्रतिरोधक क्षमता बढाउँछ</div>
+      </div>
+      <div class="vitamin-pill">
+        <div class="vitamin-name">Folate (B9)</div>
+        <div class="vitamin-benefit">Essential for cell growth — especially important for growing children</div>
+        <div class="vitamin-benefit-ne">कोष वृद्धिका लागि आवश्यक — बच्चाहरूका लागि विशेष महत्वपूर्ण</div>
+      </div>
+      <div class="vitamin-pill">
+        <div class="vitamin-name">Dietary Fiber</div>
+        <div class="vitamin-benefit">Improves digestion, controls blood sugar, and keeps you full longer</div>
+        <div class="vitamin-benefit-ne">पाचन सुधार्छ, रगतको चिनी नियन्त्रण गर्छ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RICE TECHNOLOGY SECTION -->
+<div class="rice-tech-section">
+  <p class="section-title">Our Rice — Clean &amp; Ready to Cook</p>
+  <p class="section-sub">No sorting, no picking, no winnowing needed at home</p>
+  <div class="rice-tech-grid">
+    <div class="rice-tech-card">
+      <div class="rice-tech-icon">🤖</div>
+      <div>
+        <div class="rice-tech-title">Automatic Processing</div>
+        <div class="rice-tech-title-ne">स्वचालित प्रक्रिया</div>
+        <div class="rice-tech-desc">Our fully automatic rice mill handles every step — husking, milling, and polishing — with zero manual intervention needed.</div>
+        <div class="rice-tech-desc-ne">हाम्रो स्वचालित मिलले भुस छुट्याउने, पिस्ने र पालिस गर्ने सबै काम गर्छ।</div>
+      </div>
+    </div>
+    <div class="rice-tech-card">
+      <div class="rice-tech-icon">✨</div>
+      <div>
+        <div class="rice-tech-title">No Winnowing Required</div>
+        <div class="rice-tech-title-ne">पछार्नु पर्दैन</div>
+        <div class="rice-tech-desc">Our machine automatically separates husk, dust, and debris — you get perfectly clean rice, no blowing or manual cleaning needed.</div>
+        <div class="rice-tech-desc-ne">यन्त्रले नै भुस, धुलो र फोहोर छुट्याउँछ — घरमा हातले सफा गर्ने झन्झट छैन।</div>
+      </div>
+    </div>
+    <div class="rice-tech-card">
+      <div class="rice-tech-icon">🔍</div>
+      <div>
+        <div class="rice-tech-title">No Sorting or Picking</div>
+        <div class="rice-tech-title-ne">छान्नु वा टिप्नु पर्दैन</div>
+        <div class="rice-tech-desc">Every batch goes through automatic sorting — stones and impurities are removed by the machine before the rice reaches you.</div>
+        <div class="rice-tech-desc-ne">ढुङ्गा, खराब दाना र अशुद्धि यन्त्रले नै हटाउँछ — तपाईंलाई टिप्नु पर्दैन।</div>
+      </div>
+    </div>
+    <div class="rice-tech-card">
+      <div class="rice-tech-icon">💧</div>
+      <div>
+        <div class="rice-tech-title">Consistently Pure Output</div>
+        <div class="rice-tech-title-ne">सधैं शुद्ध उत्पादन</div>
+        <div class="rice-tech-desc">The result is clean, uniform rice — ready to wash and cook straight from the bag, saving you time every day.</div>
+        <div class="rice-tech-desc-ne">झोलाबाट निकालेर सोझै धोएर पकाउन मिल्छ — हरेक दिन समय बच्छ।</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<div class="section why-section">
+  <p class="section-title">Why choose us</p>
+  <p class="section-sub">Built on quality, technology, and trust</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div style="font-size:28px; color:#D85A30;">🏭</div>
+      <div class="why-label">Modern mill with latest automatic technology</div>
+      <div class="why-label-ne">अत्याधुनिक स्वचालित मिल</div>
+    </div>
+    <div class="why-card">
+      <div style="font-size:28px; color:#D85A30;">🧬</div>
+      <div class="why-label">Nutrients &amp; fiber preserved in every grind</div>
+      <div class="why-label-ne">पोषण र फाइबर सुरक्षित</div>
+    </div>
+    <div class="why-card">
+      <div style="font-size:28px; color:#D85A30;">✅</div>
+      <div class="why-label">Pure &amp; fresh products, no additives</div>
+      <div class="why-label-ne">शुद्ध र ताजा उत्पाद</div>
+    </div>
+    <div class="why-card">
+      <div style="font-size:28px; color:#D85A30;">⏱️</div>
+      <div class="why-label">Quick turnaround for all orders</div>
+      <div class="why-label-ne">छिटो सेवा</div>
+    </div>
+    <div class="why-card">
+      <div style="font-size:28px; color:#D85A30;">👨‍👩‍👧</div>
+      <div class="why-label">Trusted by local households</div>
+      <div class="why-label-ne">स्थानीय परिवारहरूको भरोसा</div>
+    </div>
+    <div class="why-card">
+      <div style="font-size:28px; color:#D85A30;">💰</div>
+      <div class="why-label">Fair &amp; affordable pricing</div>
+      <div class="why-label-ne">उचित र किफायती मूल्य</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-box">
+    <h2>Contact us</h2>
+    <p>Reach out to place an order or ask about our products. We're happy to help!</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="contact-card-label"><span class="card-icon">📞</span> PHONE &amp; WHATSAPP</div>
+        <div class="contact-card-value">+977 9845738880</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label"><span class="card-icon">📍</span> ADDRESS</div>
+        <div class="contact-card-value">Janakpurdham-23, Bindhi</div>
+        <div class="contact-card-sub">जनकपुरधाम-२३, बिन्धी</div>
+      </div>
+      <div class="contact-card" style="grid-column: 1/-1;">
+        <div class="contact-card-label"><span class="card-icon">🕐</span> WORKING HOURS</div>
+        <div class="contact-card-value">Everyday &nbsp;|&nbsp; 4 PM – 7 PM</div>
+        <div class="contact-card-sub">Sat &amp; Sun — Contact as needed, 7 AM – 7 PM</div>
+      </div>
+    </div>
+    <a class="whatsapp-btn" href="https://wa.me/9779845738880" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Connect on WhatsApp
+    </a>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-name">Shree Ram Rice Mill</div>
+  <div class="footer-nepali">श्री राम राइस मिल</div>
+  <div class="footer-info">Janakpurdham-23, Bindhi &nbsp;|&nbsp; +977 9845738880 &nbsp;|&nbsp; © 2026</div>
+</div>
+
+</body>
+</html>
