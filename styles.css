@@ -1,57 +1,158 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap");
 
 /* Website styles. Keep section order: later rules refine earlier defaults.
    sf- is the shared class prefix; #srm-film scopes the website styles. */
 
 /* 1. Page defaults and reduced-motion scrolling */
 
-html{scroll-behavior:smooth;background:#492413}
-body{margin:0}
-#srm-film{max-width:1440px;margin-inline:auto}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
+html {
+  scroll-behavior: smooth;
+  background: #492413;
+}
+body {
+  margin: 0;
+}
+#srm-film {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 /* 2. Background transitions between sections */
 
-#srm-film.soft-seams.colour-update .sf-backdrop{background:linear-gradient(to top,#63331d 0,transparent 125px),radial-gradient(ellipse at 76% 42%,#ce804c 0%,#96502b 30%,#542713 78%)}
-#srm-film.soft-seams.colour-update .sf-services{border-top-color:transparent;background:linear-gradient(to bottom,#63331d 0,transparent 125px),linear-gradient(to top,#63311c 0,transparent 125px),radial-gradient(ellipse at 76% 42%,#ce804c 0%,#96502b 30%,#542713 78%)}
-#srm-film.soft-seams.colour-update .sf-roti-section{background:linear-gradient(to bottom,#63311c 0,transparent 125px),linear-gradient(to top,#61311e 0,transparent 125px),radial-gradient(ellipse at 74% 57%,#a86134 0%,#783a20 44%,#492212 95%)}
-#srm-film.soft-seams.colour-update .sf-rice-section{background:linear-gradient(to bottom,#61311e 0,transparent 125px),linear-gradient(to top,#35402a 0,transparent 150px),radial-gradient(ellipse at 24% 42%,#b47c42 0%,#8f522c 43%,#653019 88%)}
-#srm-film.soft-seams.colour-update .sf-contact{background:linear-gradient(to bottom,#35402a 0,transparent 150px),linear-gradient(to top,#243728 0,transparent 110px),radial-gradient(ellipse at 13% 18%,#536046 0%,#344533 48%,#243728 100%)}
-#srm-film.soft-seams.footer-strip .sf-marquee{border-top-color:transparent;background:#243728}
-#srm-film.soft-seams.colour-update .sf-footer{border-top-color:transparent;background:linear-gradient(to bottom,#243728,#17281d)}
-#srm-film.soft-seams .sf-nav{border-bottom-color:#f4ca8b15}
-
+#srm-film.soft-seams.colour-update .sf-backdrop {
+  background:
+    linear-gradient(to top, #63331d 0, transparent 125px),
+    radial-gradient(ellipse at 76% 42%, #ce804c 0%, #96502b 30%, #542713 78%);
+}
+#srm-film.soft-seams.colour-update .sf-services {
+  border-top-color: transparent;
+  background:
+    linear-gradient(to bottom, #63331d 0, transparent 125px),
+    linear-gradient(to top, #63311c 0, transparent 125px),
+    radial-gradient(ellipse at 76% 42%, #ce804c 0%, #96502b 30%, #542713 78%);
+}
+#srm-film.soft-seams.colour-update .sf-roti-section {
+  background:
+    linear-gradient(to bottom, #63311c 0, transparent 125px),
+    linear-gradient(to top, #61311e 0, transparent 125px),
+    radial-gradient(ellipse at 74% 57%, #a86134 0%, #783a20 44%, #492212 95%);
+}
+#srm-film.soft-seams.colour-update .sf-rice-section {
+  background:
+    linear-gradient(to bottom, #61311e 0, transparent 125px),
+    linear-gradient(to top, #35402a 0, transparent 150px),
+    radial-gradient(ellipse at 24% 42%, #b47c42 0%, #8f522c 43%, #653019 88%);
+}
+#srm-film.soft-seams.colour-update .sf-contact {
+  background:
+    linear-gradient(to bottom, #35402a 0, transparent 150px),
+    linear-gradient(to top, #243728 0, transparent 110px),
+    radial-gradient(ellipse at 13% 18%, #536046 0%, #344533 48%, #243728 100%);
+}
+#srm-film.soft-seams.footer-strip .sf-marquee {
+  border-top-color: transparent;
+  background: #243728;
+}
+#srm-film.soft-seams.colour-update .sf-footer {
+  border-top-color: transparent;
+  background: linear-gradient(to bottom, #243728, #17281d);
+}
+#srm-film.soft-seams .sf-nav {
+  border-bottom-color: #f4ca8b15;
+}
 
 /* 3. Scrolling footer strip */
 
-#srm-film.footer-strip .sf-marquee{background:#243728;color:#e8ce9e;border-top:1px solid #cbb47b35;padding:17px 0;font-size:9px;letter-spacing:2px}
-#srm-film.footer-strip .sf-marquee-line{animation-duration:44s}
-
+#srm-film.footer-strip .sf-marquee {
+  background: #243728;
+  color: #e8ce9e;
+  border-top: 1px solid #cbb47b35;
+  padding: 17px 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+#srm-film.footer-strip .sf-marquee-line {
+  animation-duration: 44s;
+}
 
 /* 4. Service and contact colour theme */
 
-#srm-film.colour-update .sf-services{background:radial-gradient(ellipse at 76% 42%,#ce804c 0%,#96502b 30%,#542713 78%);color:#fff2d8;border-top:1px solid #f4ca8b30}
-#srm-film.colour-update .sf-services .sf-kicker{color:#f3cf95}
-#srm-film.colour-update .sf-services h2{color:#fff2d8}
-#srm-film.colour-update .sf-services .sf-section-head>p{color:#f5ddbd}
-#srm-film.colour-update .sf-services .sf-bulk,#srm-film.colour-update .sf-services .sf-bulk span:last-child{color:#f5dab1}
-#srm-film.colour-update .sf-services .sf-card{box-shadow:0 14px 30px #2b100c25}
-#srm-film.colour-update .sf-services .sf-card:hover{box-shadow:0 22px 34px #2b100c40}
-#srm-film.colour-update .sf-contact{background:radial-gradient(ellipse at 13% 18%,#536046 0%,#344533 48%,#243728 100%);color:#fff1d6}
-#srm-film.colour-update .sf-contact h2{color:#fff1d6}
-#srm-film.colour-update .sf-contact .sf-kicker{color:#edcf97}
-#srm-film.colour-update .sf-contact p{color:#e3dfc9}
-#srm-film.colour-update .sf-contact .sf-detail{color:#fff0d6;border-bottom-color:#d3c09250}
-#srm-film.colour-update .sf-contact .sf-detail small{color:#e9ca92}
-#srm-film.colour-update .sf-contact .sf-cta{background:#f2d59d;border-color:#f2d59d;color:#263c2b}
-#srm-film.colour-update .sf-contact .sf-cta:hover{background:#ffe5b5;box-shadow:0 12px 28px #11231945}
-#srm-film.colour-update .sf-footer{background:#17281d;color:#e1ceaa;border-top:1px solid #bbbc8450}
-
+#srm-film.colour-update .sf-services {
+  background: radial-gradient(
+    ellipse at 76% 42%,
+    #ce804c 0%,
+    #96502b 30%,
+    #542713 78%
+  );
+  color: #fff2d8;
+  border-top: 1px solid #f4ca8b30;
+}
+#srm-film.colour-update .sf-services .sf-kicker {
+  color: #f3cf95;
+}
+#srm-film.colour-update .sf-services h2 {
+  color: #fff2d8;
+}
+#srm-film.colour-update .sf-services .sf-section-head > p {
+  color: #f5ddbd;
+}
+#srm-film.colour-update .sf-services .sf-bulk,
+#srm-film.colour-update .sf-services .sf-bulk span:last-child {
+  color: #f5dab1;
+}
+#srm-film.colour-update .sf-services .sf-card {
+  box-shadow: 0 14px 30px #2b100c25;
+}
+#srm-film.colour-update .sf-services .sf-card:hover {
+  box-shadow: 0 22px 34px #2b100c40;
+}
+#srm-film.colour-update .sf-contact {
+  background: radial-gradient(
+    ellipse at 13% 18%,
+    #536046 0%,
+    #344533 48%,
+    #243728 100%
+  );
+  color: #fff1d6;
+}
+#srm-film.colour-update .sf-contact h2 {
+  color: #fff1d6;
+}
+#srm-film.colour-update .sf-contact .sf-kicker {
+  color: #edcf97;
+}
+#srm-film.colour-update .sf-contact p {
+  color: #e3dfc9;
+}
+#srm-film.colour-update .sf-contact .sf-detail {
+  color: #fff0d6;
+  border-bottom-color: #d3c09250;
+}
+#srm-film.colour-update .sf-contact .sf-detail small {
+  color: #e9ca92;
+}
+#srm-film.colour-update .sf-contact .sf-cta {
+  background: #f2d59d;
+  border-color: #f2d59d;
+  color: #263c2b;
+}
+#srm-film.colour-update .sf-contact .sf-cta:hover {
+  background: #ffe5b5;
+  box-shadow: 0 12px 28px #11231945;
+}
+#srm-film.colour-update .sf-footer {
+  background: #17281d;
+  color: #e1ceaa;
+  border-top: 1px solid #bbbc8450;
+}
 
 /* 5. Base layout, typography, navigation, product sections and mobile rules */
 
-500;600;700&family=Playfair+Display:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap");
 #srm-film {
   --cream: #fff2d8;
   --gold: #eec477;
